@@ -9,6 +9,8 @@ from email.header import Header
 from datetime import datetime
 from twilio.rest import Client
 
+print("[LOG] Script main.py iniciado")
+
 # Configurações
 VIVAREAL_URL = "https://www.vivareal.com.br/venda/sp/campinas/bairros/barao-geraldo/casa_residencial/?onde=%2CSão+Paulo%2CCampinas%2CBairros%2CBarão+Geraldo%2C%2C%2Cneighborhood%2CBR>Sao+Paulo>NULL>Campinas>Barrios>Barao+Geraldo%2C-22.832419%2C-47.080202%2C&tipos=casa_residencial&precoMaximo=1000000&transacao=venda"
 NOTIFIED_FILE = "notified_ads.json"

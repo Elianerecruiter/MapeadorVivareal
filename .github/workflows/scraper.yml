@@ -10,17 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
+      - name: Mostrar arquivos do diretório
+        run: ls -lh
+
+      - name: Mostrar variáveis de ambiente (sem segredos)
+        run: env | grep -v -i 'SECRET\|TOKEN\|PASSWORD'
+
       - name: Configurar Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
+
       - name: Instalar dependências
         run: pip install -r requirements.txt
-      - name: Executar script
-        env:
-          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
-          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-        run: python main.py 
+
+      - name: Executar script com log detalhado
+        run: |
+          echo "[LOG] Iniciando execução do main.py"
+          python main.py
+          echo "[LOG] Execução do main.py finalizada" 

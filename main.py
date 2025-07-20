@@ -42,6 +42,8 @@ def save_notified_ads(ad_ids):
 
 def fetch_ads():
     resp = requests.get(VIVAREAL_URL, headers={"User-Agent": "Mozilla/5.0"})
+    print(f"[LOG] Status code: {resp.status_code}")
+    print(f"[LOG] Primeiros 500 caracteres do HTML: {resp.text[:500]}")
     soup = BeautifulSoup(resp.text, "html.parser")
     ads = []
     for li in soup.select('li[data-cy="rp-property-cd"]'):
